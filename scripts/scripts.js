@@ -15,8 +15,8 @@ $(document).ready(function() {
         }
     });
 
-    $(".smartphones").click(function() {
-        $("#inner_container").load("views/SmartPhones.html"); //load contact us page on click
+    $(".products").click(function() {
+        $("#inner_container").load("views/Products.html"); //load contact us page on click
         $("#wowslider-container").hide();
     });
 
