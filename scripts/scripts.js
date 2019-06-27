@@ -4,6 +4,10 @@ $(document).ready(function() {
 
     $("#inner_container").load("views/Home.html"); //load home page by default
 
+    if (window.matchMedia("(min-width: 769px)").matches) //if media query size min-width is 769px show slider
+    {
+        $("#wowslider-container").show();
+    }
 
     $(".home").click(function() {
 
@@ -38,15 +42,49 @@ $(document).ready(function() {
         $("#inner_container").load("views/partners.html"); //load partners us page on click
         $("#wowslider-container").hide();
     });
-    $('.home a').addClass('highlight'); //set home to highlighted on page load
 
-    $('#headerNav li a').click(function() {
-        $('#headerNav li a').removeClass('highlight');
-        $(this).addClass('highlight');
+    $('.main').addClass('highlight'); //set home to highlighted on page load
+
+    //highlight current page
+    $('.home,.products,.aboutus,.contactus').click(function() {
+
+        var pageIdentArr = this.className;
+        var pageIdent = pageIdentArr.split(" ");
+        if (pageIdent[0] == "home") {
+            $("#products").removeClass('highlight');
+            $("#aboutus").removeClass('highlight');
+            $("#contactus").removeClass('highlight');
+            $("#home").addClass('highlight');
+        } else if (pageIdent[0] == "products") {
+            $("#home").removeClass('highlight');
+            $("#aboutus").removeClass('highlight');
+            $("#contactus").removeClass('highlight');
+            $("#products").addClass('highlight');
+        } else if (pageIdent[0] == "aboutus") {
+            $("#home").removeClass('highlight');
+            $("#contactus").removeClass('highlight');
+            $("#products").removeClass('highlight');
+            $("#aboutus").addClass('highlight');
+        } else if (pageIdent[0] == "contactus") {
+            $("#home").removeClass('highlight');
+            $("#products").removeClass('highlight');
+            $("#aboutus").removeClass('highlight');
+            $("#contactus").addClass('highlight');
+        }
     });
 
+    /*$('#mainNav a').click(function() {
+        $('#mainNav a').removeClass('highlight');
+        $(this).addClass('highlight');
+        alert(this.className);
+    });*/
+    /*$('#headerNav li a').click(function() {
+        $('#headerNav li a').removeClass('highlight');
+        $(this).addClass('highlight');
+    });*/
+
     $(window).resize(function() { //performs functionality based on screen resize event
-        var pageIdent = $("#pageIdent").val();
+
 
         if (window.matchMedia("(min-width: 769px)").matches && pageIdent == "homePage") //if media query size min-width is 769px show slider
         {
@@ -56,6 +94,8 @@ $(document).ready(function() {
         }
 
     });
+
+
 
 });
 
@@ -91,5 +131,14 @@ window.onclick = function(event) {
                 openDropdown.classList.remove('show');
             }
         }
+    }
+}
+
+function myFunction() {
+    var x = document.getElementById("mainNav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
     }
 }
