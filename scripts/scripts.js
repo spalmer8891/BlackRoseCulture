@@ -24,6 +24,16 @@ $(document).ready(function() {
         $("#wowslider-container").hide();
     });
 
+    $(".productview").click(function() {
+        $("#inner_container").load("views/ProductView.html"); //load contact us page on click
+        $("#wowslider-container").hide();
+    });
+
+    $(".testpage").click(function() {
+        $("#inner_container").load("views/TestPage.html"); //load contact us page on click
+        $("#wowslider-container").hide();
+    });
+
     $(".aboutus").click(function() {
         $("#inner_container").load("views/AboutUs.html"); //load contact us page on click
         $("#wowslider-container").hide();
@@ -94,8 +104,6 @@ $(document).ready(function() {
         }
 
     });
-
-
 
 });
 
